@@ -1,23 +1,24 @@
 <?php
 
+// database/factories/AddressFactory.php
+
 namespace Database\Factories;
 
+use App\Models\Address;
+use App\Models\Commune;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Address>
- */
 class AddressFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Address::class;
+
     public function definition(): array
     {
         return [
-            //
+            'street' => $this->faker->streetName(),
+            'number' => $this->faker->buildingNumber(),
+            'reference' => $this->faker->optional()->sentence(),
+            'commune_id' => Commune::inRandomOrder()->first()->id, // Selecciona un ID de comuna existente
         ];
     }
 }

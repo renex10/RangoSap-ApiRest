@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('zones', function (Blueprint $table) {
-            $table->id(); // Identificador único (unsignedBigInt por defecto)
+            $table->id(); // Identificador único
             $table->string('name'); // Nombre de la zona
             $table->text('description')->nullable(); // Descripción opcional
+            $table->foreignId('installation_id')->constrained()->onDelete('cascade'); // Relación con la instalación
             $table->timestamps(); // Timestamps created_at y updated_at
         });
     }

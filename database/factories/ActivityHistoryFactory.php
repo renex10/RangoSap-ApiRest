@@ -2,22 +2,21 @@
 
 namespace Database\Factories;
 
+use App\Models\ActivityHistory;
+use App\Models\Activity;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ActivityHistory>
- */
 class ActivityHistoryFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = ActivityHistory::class;
+
+    public function definition()
     {
         return [
-            //
+            'activity_id' => Activity::factory(), // Relación con una actividad existente
+            'user_id' => User::factory(), // Relación con un usuario existente
+            'progress' => $this->faker->numberBetween(0, 100), // Progreso aleatorio entre 0 y 100
         ];
     }
 }

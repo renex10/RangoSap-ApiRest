@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Phone; // Asegúrate de importar el modelo Phone
 use Illuminate\Database\Seeder;
 
 class PhoneSeeder extends Seeder
@@ -12,6 +12,7 @@ class PhoneSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        // Crear 100 números de teléfono para usuarios existentes
+        Phone::factory()->count(100)->create();
     }
 }

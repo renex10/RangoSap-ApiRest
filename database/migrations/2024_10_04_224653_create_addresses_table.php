@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-    $table->string('street'); // Calle
-    $table->string('number'); // Número de casa
-    $table->string('reference')->nullable(); // Referencia opcional
-    $table->foreignId('commune_id')->constrained('comunes')->onDelete('cascade'); // Referencia a la tabla comunes
-    $table->timestamps();
+            $table->string('street'); // Campo para la calle
+            $table->string('number'); // Campo para el número
+            $table->string('reference')->nullable(); // Nuevo campo 'reference', permite valores nulos
+            $table->foreignId('commune_id')->constrained('communes')->onDelete('cascade'); // Relación con la tabla 'communes'
+            $table->timestamps();
         });
     }
 
@@ -29,3 +29,4 @@ return new class extends Migration
         Schema::dropIfExists('addresses');
     }
 };
+

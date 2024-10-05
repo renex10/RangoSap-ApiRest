@@ -2,22 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\InventoryAlert;
+use App\Models\InventoryItem;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\InventoryAlert>
- */
 class InventoryAlertFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = InventoryAlert::class;
+
+    public function definition()
     {
         return [
-            //
+            'inventory_item_id' => InventoryItem::factory(), // Crea un nuevo item de inventario
+            'threshold' => $this->faker->numberBetween(1, 100), // Umbral entre 1 y 100
         ];
     }
 }

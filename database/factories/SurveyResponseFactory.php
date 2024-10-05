@@ -17,7 +17,9 @@ class SurveyResponseFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'survey_id' => Survey::factory(), // Crea una nueva encuesta
+            'user_id' => User::factory(), // Crea un nuevo usuario
+            'response' => $this->faker->text, // Respuesta del usuario
         ];
     }
 }

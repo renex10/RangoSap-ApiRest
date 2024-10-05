@@ -2,22 +2,20 @@
 
 namespace Database\Factories;
 
+use App\Models\Zone;
+use App\Models\Installation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Zone>
- */
 class ZoneFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = Zone::class;
+
+    public function definition()
     {
         return [
-            //
+            'name' => $this->faker->word(), // Nombre de la zona
+            'description' => $this->faker->sentence(), // Descripción opcional
+            'installation_id' => Installation::factory(), // Genera una instalación asociada
         ];
     }
 }
