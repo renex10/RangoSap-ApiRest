@@ -6,19 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('comunes', function (Blueprint $table) {
-            $table->id(); // Esto genera un campo unsignedBigInt por defecto
-            $table->string('name');
-            $table->foreignId('region_id')->constrained()->onDelete('cascade');
+        Schema::create('surveys', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
-        
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('comunes');
+        Schema::dropIfExists('surveys');
     }
 };
